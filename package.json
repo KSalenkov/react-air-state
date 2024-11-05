@@ -40,11 +40,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/KSalenkov/chat-virtualized-list.git"
+    "url": "https://github.com/KSalenkov/react-air-state"
   },
   "bugs": {
-    "url": "https://github.com/KSalenkov/chat-virtualized-list/issues"
+    "url": "https://github.com/KSalenkov/react-air-state/issues"
   },
-  "homepage": "https://github.com/KSalenkov/chat-virtualized-list#readme",
+  "homepage": "https://github.com/KSalenkov/react-air-state",
   "description": ""
 }
