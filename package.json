@@ -1,5 +1,5 @@
 {
-  "name": "air-state",
+  "name": "react-air-state",
   "version": "0.0.1",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
