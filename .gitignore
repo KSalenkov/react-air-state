@@ -2,8 +2,8 @@
 /node_modules
 /.pnp
 .pnp.js
-examples/todo/node_modules
-examples/todo/.env
+/examples/todo/node_modules
+/examples/todo/.env
 
 # Editor directories and files
 *.idea
