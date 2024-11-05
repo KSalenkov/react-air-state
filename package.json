@@ -1,0 +1,50 @@
+{
+  "name": "air-state",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c && tsc --emitDeclarationOnly"
+  },
+  "keywords": [
+    "store",
+    "state",
+    "react",
+    "air",
+    "airstate",
+    "external"
+  ],
+  "author": "eskey",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/react": "^18.3.12",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "rollup": "^2.79.2",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.8.1",
+    "typescript": "^5.6.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/KSalenkov/chat-virtualized-list.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KSalenkov/chat-virtualized-list/issues"
+  },
+  "homepage": "https://github.com/KSalenkov/chat-virtualized-list#readme",
+  "description": ""
+}
