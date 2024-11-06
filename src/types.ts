@@ -13,3 +13,10 @@ export type AirState<T> = {
     subscribe: (action: SetValueAction<T>) => Subscription;
     getValue: () => T;
 };
+
+export type CombineAirState<T> = {
+    readonly type: 'combineAirState';
+    useValue: () => T;
+    subscribe: (action: SetValueAction<T>) => Subscription;
+    getValue: () => T;
+};

@@ -1,2 +1,2 @@
 export * from './types';
-export { airState } from './airState';
+export { airState, combineAirState } from './airState';

@@ -4,6 +4,8 @@
 .pnp.js
 /examples/todo/node_modules
 /examples/todo/.env
+/examples/posts/node_modules
+/examples/posts/.env
 
 # Editor directories and files
 *.idea
