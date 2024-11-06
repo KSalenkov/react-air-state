@@ -10,7 +10,10 @@
     "README.md"
   ],
   "scripts": {
-    "build": "rollup -c && tsc --emitDeclarationOnly"
+    "build": "rollup -c && tsc --emitDeclarationOnly",
+    "lint": "eslint 'src/**/*.ts'",
+    "lint:fix": "eslint 'src/**/*.ts' --fix",
+    "format": "prettier --write 'src/**/*.{ts,js,jsx,json,md}'"
   },
   "keywords": [
     "store",
@@ -31,6 +34,14 @@
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@rollup/plugin-typescript": "^12.1.1",
     "@types/react": "^18.3.12",
+    "@typescript-eslint/eslint-plugin": "^8.13.0",
+    "@typescript-eslint/parser": "^8.13.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.0.0",
+    "prettier": "^3.3.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "rollup": "^2.79.2",

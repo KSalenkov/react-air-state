@@ -1,12 +1,12 @@
-import {SetValueAction, Subscription} from "./types";
+import { SetValueAction, Subscription } from './types';
 
 export const idAdapter = () => {
     let id = 0;
 
     return () => {
-        return id = id + 1;
-    }
-}
+        return (id = id + 1);
+    };
+};
 
 export const subscriptionAdapter = <T>() => {
     const getId = idAdapter();
@@ -19,18 +19,18 @@ export const subscriptionAdapter = <T>() => {
         subscriptions[subId] = sub;
 
         return () => {
-            delete subscriptions[subId]
-        }
-    }
+            delete subscriptions[subId];
+        };
+    };
 
     const sendToSubscribers = (value: T) => {
         Object.values(subscriptions).forEach((dispatch) => {
             dispatch(value);
-        })
-    }
+        });
+    };
 
     return {
         subscribe,
         sendToSubscribers
-    }
-}
+    };
+};
