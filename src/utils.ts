@@ -1,4 +1,4 @@
-import { SetValueAction, Subscription } from './types';
+import { Selector, SetValueAction, Subscription } from './types';
 
 export const idAdapter = () => {
     let id = 0;
@@ -34,3 +34,5 @@ export const subscriptionAdapter = <T>() => {
         sendToSubscribers
     };
 };
+
+export const createSelector = <State, Result>(selector: Selector<State, Result>): Selector<State, Result> => selector;

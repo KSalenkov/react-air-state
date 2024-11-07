@@ -1,6 +1,6 @@
-import { AirState, ValueRef } from './types';
-import { useEffect, useState } from 'react';
-import { subscriptionAdapter } from './utils';
+import { AirState, Selector, ValueRef } from './types';
+import { useEffect, useRef, useState } from 'react';
+import { createSelector, subscriptionAdapter } from './utils';
 
 export const makeAirState = <T>(defaultValue: T): AirState<T> => {
     const valueRef: ValueRef<T> = {
@@ -29,6 +29,35 @@ export const makeAirState = <T>(defaultValue: T): AirState<T> => {
         return state;
     };
 
+    const useSelect = <R>(selector: Selector<T, R>) => {
+        const [state, setState] = useState<R>(selector(valueRef.current));
+
+        const selectorRef = useRef<Selector<T, R>>(selector);
+        const stateRef = useRef<R>(state);
+
+        useEffect(() => {
+            selectorRef.current = selector;
+        }, [selector]);
+
+        useEffect(() => {
+            stateRef.current = state;
+        }, [state]);
+
+        useEffect(() => {
+            const dispatcher = (newValue: T) => {
+                const selectValue = selectorRef.current(newValue) as R;
+
+                if (stateRef.current !== selectValue) {
+                    setState(selectValue);
+                }
+            };
+
+            return subscribe(dispatcher);
+        }, []);
+
+        return state;
+    };
+
     const getValue = () => {
         return valueRef.current;
     };
@@ -37,7 +66,9 @@ export const makeAirState = <T>(defaultValue: T): AirState<T> => {
         type: 'airState',
         dispatch: changeState,
         useValue: useValueState,
+        useSelect: useSelect,
         subscribe,
-        getValue
+        getValue,
+        createSelector
     };
 };
