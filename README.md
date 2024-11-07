@@ -151,4 +151,4 @@ const PostsComponent = () => {
 
 ## Methods
 
-`combineAirState` creates an object with the same methods as `airState`, except for the `dispatch` method
+`combineAirState` creates an object with the same methods as `airState`, except for the methods `dispatch`, `useSelect`, `createSelector`
