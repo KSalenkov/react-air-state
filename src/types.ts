@@ -18,3 +18,10 @@ export type AirState<T> = {
     getValue: () => T;
     createSelector: <Result>(selector: Selector<T, Result>) => Selector<T, Result>;
 };
+
+export type CombineAirState<T> = {
+    readonly type: 'combineAirState';
+    useValue: () => T;
+    subscribe: (action: SetValueAction<T>) => Subscription;
+    getValue: () => T;
+};

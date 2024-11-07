@@ -44,24 +44,25 @@ const CounterComponent = () => {
 ```
 
 
-# `airState` 
+# airState
+
 Factory Function that creates an object with the required set of methods.
 It takes 1 argument, which is the default state value.
 If there is no default value, you must explicitly specify the future state type
 `const valueState = airState<string>()`
 
-# Methods
+## Methods
 
-## `dispatch`
+### `dispatch`
 This method allows you to update the state to a different value and start re-visualization. You can pass the new state directly or a function that calculates it from the previous state
 
-## `useValue`
+### `useValue`
 The hook to extract the current state
 
-## `useSelect`
+### `useSelect`
 The hook that extracts the state calculated by the function (selector) passed to it
 
-## `createSelector`
+### `createSelector`
 Function for creating a typed selector
 
 #### Example with `useSelect` and `createSelector`
@@ -83,11 +84,71 @@ const Component = () => {
 }
 ```
 
-## `subscribe`
+### `subscribe`
 This method for passing your function to subscribe to a state change
 
-## `getValue`
+### `getValue`
 This method allows you to get the current state
 
 
+# combineAirState
 
+Factory Function for combining different states into one. It takes 2 arguments:
+- array of states
+- function that calculates a new state based on the transmitted states
+
+### Example
+
+```tsx
+import {airState, combineAirState} from "react-air-state"
+
+const postsState = airState([
+    {
+        id: 1,
+        title: 'Post 1'
+    },
+    {
+        id: 2,
+        title: 'Post 2'
+    }
+])
+
+const commentsState = airState([
+    {
+        id: 1,
+        postId: 1,
+        message: 'Comment 1'
+    },
+    {
+        id: 2,
+        postId: 1,
+        message: 'Comment 2'
+    }
+])
+
+const normalizePostsState = combineAirState([postsState, commentsState], (posts, comments) => {
+    return posts.map(post => ({
+        ...post,
+        comments: comments.filter(comment => comment.postId === post.id)
+    }))
+})
+
+const PostsComponent = () => {
+    const posts = normalizePostsState.useValue()
+    
+    return (
+        <div>
+            {posts.map(post => (
+                <div key={post.id}>
+                    <h3>{post.title}</h3>
+                    <p>Comment count: {post.comments.length}</p>
+                </div>
+            ))}
+        </div>
+    )
+}
+```
+
+## Methods
+
+`combineAirState` creates an object with the same methods as `airState`, except for the `dispatch` method

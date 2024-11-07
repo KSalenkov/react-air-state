@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+
+  padding: 64px 32px;
+  width: 100%;
+}
+
+.posts_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  max-width: 100%;
+}
+
+.post {
+  border-radius: 16px;
+
+  width: calc((100% - 24px * 4) / 4);
+  padding: 16px;
+
+  background-color: #b3b2b2;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
