@@ -58,6 +58,31 @@ This method allows you to update the state to a different value and start re-vis
 ## `useValue`
 The hook to extract the current state
 
+## `useSelect`
+The hook that extracts the state calculated by the function (selector) passed to it
+
+## `createSelector`
+Function for creating a typed selector
+
+#### Example with `useSelect` and `createSelector`
+
+```tsx
+import {airState} from "react-air-state"
+
+export const userState = airState({
+    name: "Smith",
+    token: "token"
+})
+
+const selectToken = userState.createSelector((user) => user.token)
+
+const Component = () => {
+    const token = userState.useSelect(selectToken);
+    
+    /* ... */
+}
+```
+
 ## `subscribe`
 This method for passing your function to subscribe to a state change
 
