@@ -1,4 +1,4 @@
-import { AirStateOptions } from '../types';
+import { AirStateOptions } from '../state/types';
 
 export const getInitValue = <T>(defaultValue: T, options?: AirStateOptions): T => {
     if (options?.localStorageKey) {

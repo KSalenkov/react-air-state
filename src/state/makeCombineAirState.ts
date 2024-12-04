@@ -1,6 +1,6 @@
 import { AirState, CombineAirState, Subscription } from './types';
 import { useEffect, useState } from 'react';
-import { subscriptionAdapter } from './utils';
+import { subscriptionAdapter } from '../utils/adapters';
 
 export type ExtractReturnType<T extends AirState<any>[]> = {
     [index in keyof T]: T[index] extends T[number] ? ReturnType<T[index]['getValue']> : never;

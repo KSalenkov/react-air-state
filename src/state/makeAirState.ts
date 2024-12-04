@@ -1,7 +1,8 @@
 import { AirState, AirStateOptions, Selector, ValueRef } from './types';
 import { useEffect, useRef, useState } from 'react';
-import { createSelector, subscriptionAdapter } from './utils';
-import { getInitValue } from './utils/value';
+import { subscriptionAdapter } from '../utils/adapters';
+import { createSelector } from '../utils/selector';
+import { getInitValue } from '../utils/value';
 
 export const makeAirState = <T>(defaultValue: T, options?: AirStateOptions): AirState<T> => {
     const initValue = getInitValue(defaultValue, options);
