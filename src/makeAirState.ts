@@ -1,10 +1,13 @@
-import { AirState, Selector, ValueRef } from './types';
+import { AirState, AirStateOptions, Selector, ValueRef } from './types';
 import { useEffect, useRef, useState } from 'react';
 import { createSelector, subscriptionAdapter } from './utils';
+import { getInitValue } from './utils/value';
 
-export const makeAirState = <T>(defaultValue: T): AirState<T> => {
+export const makeAirState = <T>(defaultValue: T, options?: AirStateOptions): AirState<T> => {
+    const initValue = getInitValue(defaultValue, options);
+
     const valueRef: ValueRef<T> = {
-        current: defaultValue
+        current: initValue
     };
 
     const { subscribe, sendToSubscribers } = subscriptionAdapter<T>();
@@ -16,6 +19,10 @@ export const makeAirState = <T>(defaultValue: T): AirState<T> => {
             valueRef.current = newValue;
 
             sendToSubscribers(valueRef.current);
+        }
+
+        if (options?.localStorageKey) {
+            window.localStorage.setItem(options.localStorageKey, JSON.stringify(valueRef.current));
         }
     };
 
