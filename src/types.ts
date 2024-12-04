@@ -25,3 +25,7 @@ export type CombineAirState<T> = {
     subscribe: (action: SetValueAction<T>) => Subscription;
     getValue: () => T;
 };
+
+export type AirStateOptions = {
+    localStorageKey?: string;
+};

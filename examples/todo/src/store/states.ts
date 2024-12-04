@@ -7,4 +7,6 @@ export type TodoItem = {
     checked: boolean;
     id: string;
 };
-export const todoState = airState<TodoItem[]>([]);
+export const todoState = airState<TodoItem[]>([], {
+    localStorageKey: 'todo_list'
+});

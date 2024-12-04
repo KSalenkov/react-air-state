@@ -49,7 +49,7 @@ const CounterComponent = () => {
 Factory Function that creates an object with the required set of methods.
 It takes 1 argument, which is the default state value.
 If there is no default value, you must explicitly specify the future state type
-`const valueState = airState<string>()`
+`const valueState = airState<T>(defaultValue?: T, options?: AirStateOptions)`
 
 ## Methods
 
@@ -90,6 +90,10 @@ This method for passing your function to subscribe to a state change
 ### `getValue`
 This method allows you to get the current state
 
+## Options
+
+### `localStorageKey?: string`
+Set the key for localStorage so that your state is saved in it
 
 # combineAirState
 
