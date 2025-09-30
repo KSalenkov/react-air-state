@@ -1,7 +1,7 @@
 import { AirStateOptions } from '../types';
 
 export const getInitValue = <T>(defaultValue: T, options?: AirStateOptions): T => {
-    if (options?.localStorageKey) {
+    if (options?.localStorageKey && window) {
         try {
             const item = window.localStorage.getItem(options.localStorageKey);
 

@@ -21,7 +21,7 @@ export const makeAirState = <T>(defaultValue: T, options?: AirStateOptions): Air
             sendToSubscribers(valueRef.current);
         }
 
-        if (options?.localStorageKey) {
+        if (options?.localStorageKey && window) {
             window.localStorage.setItem(options.localStorageKey, JSON.stringify(valueRef.current));
         }
     };
