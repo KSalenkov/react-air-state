@@ -32,7 +32,7 @@ export const postsState = airState<Post[] | null>(null);
 export const usersState = airState<User[] | null>(null);
 export const commentsState = airState<Comment[] | null>(null);
 
-export const normalizePosts = combineAirState([postsState, usersState, commentsState], (posts, users, comments) => {
+export const normalizePosts = combineAirState([postsState, usersState, commentsState] as const, (posts, users, comments) => {
     if (!(posts && users && comments)) {
         return [] as NormalizePost[];
     }
@@ -43,7 +43,7 @@ export const normalizePosts = combineAirState([postsState, usersState, commentsS
         return {
             id: post.id,
             title: post.title,
-            username: currentUser.username,
+            username: currentUser?.username ?? "",
             commentsCount: comments.filter((comment) => comment.postId === post.id).length
         };
     });

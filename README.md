@@ -130,7 +130,7 @@ const commentsState = airState([
     }
 ])
 
-const normalizePostsState = combineAirState([postsState, commentsState], (posts, comments) => {
+const normalizePostsState = combineAirState([postsState, commentsState] as const, (posts, comments) => {
     return posts.map(post => ({
         ...post,
         comments: comments.filter(comment => comment.postId === post.id)
